@@ -61,6 +61,8 @@ model SvarComment {
   user      User     @relation(fields: [userId], references: [id])
   userId    Int
   parentId  Int? // Vísa í komment fyrir ofan
+  svar Svar @relation(fields: [svarId], references: [id])
+  svarId Int
   createdAt DateTime @default(now())
 }
 
