@@ -8,15 +8,12 @@ generator client {
   binaryTargets = "native"
 }
 
-// Define your own datamodels here and run `yarn redwood prisma migrate dev`
-// to create migrations for them and apply to your dev DB.
-// TODO: Please remove the following example:
 model User {
   id                   Int                    @id @default(autoincrement())
   email                String                 @unique
   name                 String //notandanafnið
   createdAt            DateTime               @default(now())
-  roles                String //moderator eða admin
+  roles                String                 @default("user") //moderator eða admin
   hashedPassword       String
   salt                 String
   imageUrl             String // Fyrir profile-mynd
@@ -35,12 +32,15 @@ model Spurning {
   body                 String
   user                 User                   @relation(fields: [userId], references: [id])
   userId               Int
+  flokkur              Flokkur                @relation(fields: [flokkurId], references: [id])
+  flokkurId            Int
   createdAt            DateTime               @default(now())
   Svar                 Svar[]
   UserLikesSvarEdaPost UserLikesSvarEdaPost[]
   userLikesSpurning    userLikesSpurning[]
 }
 
+// Many to many vensl fyrir upvotes
 model Svar {
   id         Int      @id @default(autoincrement())
   title      String
@@ -83,10 +83,18 @@ model UserLikesSvarEdaPost {
   @@id([userId, spurningId, svarId])
 }
 
+model Flokkur {
+  id       Int        @id @default(autoincrement())
+  titill   String
+  litur    String
+  Spurning Spurning[]
+}
+
 // ------------------------------------------
 
 //------- Útfærsla 2 ------------------------
 
+//Hvaða user hefur upvote-að hvaða svar
 model UserLikesSvar {
   user   User   @relation(fields: [userId], references: [id])
   userId Int
@@ -118,6 +126,7 @@ model Badge {
   userHasBadges userHasBadges[]
 }
 
+// Hvaða user á hvaða badge
 model userHasBadges {
   user    User  @relation(fields: [userId], references: [id])
   userId  Int
