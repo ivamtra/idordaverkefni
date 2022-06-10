@@ -53,6 +53,7 @@ model Svar {
 
   UserLikesSvarEdaPost UserLikesSvarEdaPost[]
   UserLikesSvar        UserLikesSvar[]
+  SvarComment          SvarComment[]
 }
 
 model SvarComment {
@@ -61,9 +62,16 @@ model SvarComment {
   user      User     @relation(fields: [userId], references: [id])
   userId    Int
   parentId  Int? // Vísa í komment fyrir ofan
-  svar Svar @relation(fields: [svarId], references: [id])
-  svarId Int
+  svar      Svar     @relation(fields: [svarId], references: [id])
+  svarId    Int
   createdAt DateTime @default(now())
+}
+
+model Flokkur {
+  id       Int        @id @default(autoincrement())
+  titill   String
+  litur    String
+  Spurning Spurning[]
 }
 
 // Útfærslur á many-to-many venslunum fyrir
@@ -83,13 +91,6 @@ model UserLikesSvarEdaPost {
   spurningId Int
 
   @@id([userId, spurningId, svarId])
-}
-
-model Flokkur {
-  id       Int        @id @default(autoincrement())
-  titill   String
-  litur    String
-  Spurning Spurning[]
 }
 
 // ------------------------------------------
