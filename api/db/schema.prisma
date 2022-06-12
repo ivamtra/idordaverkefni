@@ -89,6 +89,7 @@ model UserLikesSvarEdaPost {
   svarId     Int
   spurning   Spurning @relation(fields: [spurningId], references: [id])
   spurningId Int
+  dateTime   DateTime @default(now())
 
   @@id([userId, spurningId, svarId])
 }
@@ -99,11 +100,12 @@ model UserLikesSvarEdaPost {
 
 //Hvaða user hefur upvote-að hvaða svar
 model UserLikesSvar {
-  user   User   @relation(fields: [userId], references: [id])
-  userId Int
-  action String
-  svar   Svar   @relation(fields: [svarId], references: [id])
-  svarId Int
+  user     User     @relation(fields: [userId], references: [id])
+  userId   Int
+  action   String
+  svar     Svar     @relation(fields: [svarId], references: [id])
+  svarId   Int
+  dateTime DateTime @default(now())
 
   @@id([userId, svarId])
 }
@@ -115,6 +117,8 @@ model userLikesSpurning {
 
   spurning   Spurning @relation(fields: [spurningId], references: [id])
   spurningId Int
+  dateTime   DateTime @default(now())
+
 
   @@id([userId, spurningId])
 }
@@ -131,10 +135,12 @@ model Badge {
 
 // Hvaða user á hvaða badge
 model userHasBadges {
-  user    User  @relation(fields: [userId], references: [id])
-  userId  Int
-  badge   Badge @relation(fields: [badgeId], references: [id])
-  badgeId Int
+  user     User     @relation(fields: [userId], references: [id])
+  userId   Int
+  badge    Badge    @relation(fields: [badgeId], references: [id])
+  badgeId  Int
+  dateTime DateTime @default(now())
+
 
   @@id([userId, badgeId])
 }
