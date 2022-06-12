@@ -139,7 +139,7 @@ model userHasBadges {
   userId   Int
   badge    Badge    @relation(fields: [badgeId], references: [id])
   badgeId  Int
-  dateTime DateTime @default(now())
+  dateTime DateTime @default(now()) //Dagsetning þegar user fær verðlaun
 
 
   @@id([userId, badgeId])
