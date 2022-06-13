@@ -32,6 +32,7 @@ model Group {
   id            Int             @id @default(autoincrement())
   name          String
   imageUrl      String
+  createdAt     DateTime        @default(now())
   UserIsInGroup UserIsInGroup[]
 }
 
