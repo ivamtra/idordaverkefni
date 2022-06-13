@@ -28,7 +28,10 @@ model User {
 model Question {
   id                Int                 @id @default(autoincrement())
   title             String
-  body              String
+  sentences         Sentence[] // Hver spurning getur innihaldið nokkrar setningar sem dæmi.
+  language          String // Tungumálið á spurningunni
+  definition        String // Enska/útlenska skilgreiningin
+  other_info        String? // fleiri upplýsingar um orðið
   user              User                @relation(fields: [userId], references: [id])
   userId            Int
   category          Category            @relation(fields: [categoryId], references: [id])
@@ -36,6 +39,13 @@ model Question {
   createdAt         DateTime            @default(now())
   Answer            Answer[]
   UserLikesQuestion UserLikesQuestion[]
+}
+
+model Sentence {
+  id         Int      @id @default(autoincrement())
+  sentence   String
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId Int
 }
 
 // Many to many vensl fyrir upvotes
