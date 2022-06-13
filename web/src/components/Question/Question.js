@@ -1,16 +1,28 @@
 import { useState, useEffect } from 'react'
 import { Form, TextField } from '@redwoodjs/forms'
 
-const Question = ({ question }) => {
+const Question = ({ question, likes }) => {
+  const handleUpvoteCount = (likes) => {
+    let count = 0
+    for (let i = 0; i < likes.length; i++) {
+      if (likes[i].action === 'Like') {
+        count++
+      } else {
+        count--
+      }
+    }
+    return count
+  }
+  const [upvoteCount, setUpvoteCount] = useState(0)
   useEffect(() => {
-    console.log(question.sentences)
+    setUpvoteCount(handleUpvoteCount(likes))
   })
   return (
     <div>
       <div>
         <button>upvote</button>
         <button>downvote</button>
-        <p>Number of upvotes</p>
+        <p>Number of upvotes: {upvoteCount}</p> {}
       </div>
       <h1>{question.title}</h1>
       <h3>Setningar:</h3>

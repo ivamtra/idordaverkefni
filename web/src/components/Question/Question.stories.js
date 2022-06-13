@@ -20,8 +20,35 @@ const QUESTION = {
   language: 'enska',
 }
 
+const LIKES = [
+  {
+    userId: 1,
+    questionId: 1,
+    action: 'Like',
+    dateTime: '',
+  },
+  {
+    userId: 2,
+    questionId: 1,
+    action: 'Like',
+    dateTime: '',
+  },
+  {
+    userId: 3,
+    questionId: 1,
+    action: 'Like',
+    dateTime: '',
+  },
+  {
+    userId: 4,
+    questionId: 1,
+    action: 'Like',
+    dateTime: '',
+  },
+]
+
 export const generated = () => {
-  return <Question question={QUESTION} />
+  return <Question question={QUESTION} likes={LIKES} />
 }
 
 export default { title: 'Components/Question' }
