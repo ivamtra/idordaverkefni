@@ -25,6 +25,13 @@ model User {
   UserHasBadges     UserHasBadges[]
 }
 
+// Svipað og facebook hópur
+// Margir hópar til og hver user getur verið í mörgum hópum
+model Group {
+  id   Int    @id @default(autoincrement())
+  name String
+}
+
 model Question {
   id                Int                 @id @default(autoincrement())
   title             String
@@ -39,6 +46,7 @@ model Question {
   createdAt         DateTime            @default(now())
   Answer            Answer[]
   UserLikesQuestion UserLikesQuestion[]
+  Issue             Issue[]
 }
 
 model Sentence {
@@ -48,19 +56,28 @@ model Sentence {
   questionId Int
 }
 
-// Many to many vensl fyrir upvotes
 model Answer {
-  id         Int      @id @default(autoincrement())
-  title      String
-  body       String
-  user       User     @relation(fields: [userId], references: [id])
-  userId     Int
-  createdAt  DateTime @default(now())
-  question   Question @relation(fields: [questionId], references: [id])
-  questionId Int
+  id            Int      @id @default(autoincrement())
+  title         String
+  justification String
+  user          User     @relation(fields: [userId], references: [id])
+  userId        Int
+  createdAt     DateTime @default(now())
+  question      Question @relation(fields: [questionId], references: [id])
+  questionId    Int
 
   UserLikesAnswer UserLikesAnswer[]
   AnswerComment   AnswerComment[]
+  Translation     Translation[]
+  Issue           Issue[]
+}
+
+// Hvert svar getur innihaldið margar þýðingar sem notandinn gefur.
+model Translation {
+  id          Int    @id @default(autoincrement())
+  translation String
+  answer      Answer @relation(fields: [answerId], references: [id])
+  answerId    Int
 }
 
 model AnswerComment {
@@ -72,6 +89,7 @@ model AnswerComment {
   answer    Answer   @relation(fields: [answerId], references: [id])
   answerId  Int
   createdAt DateTime @default(now())
+  Issue     Issue[]
 }
 
 model Category {
@@ -104,6 +122,8 @@ model Category {
 // ------------------------------------------
 
 //------- Útfærsla 2 ------------------------
+
+// Many to many vensl fyrir upvotes
 
 //Hvaða user hefur upvote-að hvaða svar
 model UserLikesAnswer {
@@ -150,4 +170,19 @@ model UserHasBadges {
 
 
   @@id([userId, badgeId])
+}
+
+// Tafla sem geymir vandamál t.d. ef comment er reportað
+model Issue {
+  id            Int           @id @default(autoincrement())
+  question      Question      @relation(fields: [questionId], references: [id])
+  answer        Answer        @relation(fields: [answerId], references: [id])
+  answerComment AnswerComment @relation(fields: [answerCommentId], references: [id])
+
+  description String // Lýsingin á vandamálinu
+
+  // Gefum bull id ef notandinn gefur ekkert
+  questionId      Int @default(0)
+  answerId        Int @default(0)
+  answerCommentId Int @default(0)
 }
