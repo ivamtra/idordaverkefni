@@ -17,6 +17,7 @@ const Question = ({ question, likes }) => {
   return (
     <div>
       <div>
+        {/*Todo vantar virkni á takka */}
         <button>upvote</button>
         <button>downvote</button>
         <p>Number of upvotes: {upvoteCount}</p> {}
