@@ -9,61 +9,58 @@ generator client {
 }
 
 model User {
-  id                   Int                    @id @default(autoincrement())
-  email                String                 @unique
-  name                 String //notandanafnið
-  createdAt            DateTime               @default(now())
-  roles                String                 @default("user") //moderator eða admin
-  hashedPassword       String
-  salt                 String
-  imageUrl             String // Fyrir profile-mynd
-  Spurning             Spurning[]
-  Svar                 Svar[]
-  SvarComment          SvarComment[]
-  UserLikesSvarEdaPost UserLikesSvarEdaPost[]
-  UserLikesSvar        UserLikesSvar[]
-  userLikesSpurning    userLikesSpurning[]
-  userHasBadges        userHasBadges[]
+  id                Int                 @id @default(autoincrement())
+  email             String              @unique
+  name              String //notandanafnið
+  createdAt         DateTime            @default(now())
+  roles             String              @default("user") //State of user. Moderator, admin, banned, etc.
+  hashedPassword    String
+  salt              String
+  imageUrl          String // Fyrir profile-mynd
+  Question          Question[]
+  Answer            Answer[]
+  AnswerComment     AnswerComment[]
+  UserLikesAnswer   UserLikesAnswer[]
+  UserLikesQuestion UserLikesQuestion[]
+  UserHasBadges     UserHasBadges[]
 }
 
-model Spurning {
-  id                   Int                    @id @default(autoincrement())
-  title                String
-  body                 String
-  user                 User                   @relation(fields: [userId], references: [id])
-  userId               Int
-  flokkur              Flokkur                @relation(fields: [flokkurId], references: [id])
-  flokkurId            Int
-  createdAt            DateTime               @default(now())
-  Svar                 Svar[]
-  UserLikesSvarEdaPost UserLikesSvarEdaPost[]
-  userLikesSpurning    userLikesSpurning[]
+model Question {
+  id                Int                 @id @default(autoincrement())
+  title             String
+  body              String
+  user              User                @relation(fields: [userId], references: [id])
+  userId            Int
+  flokkur           Flokkur             @relation(fields: [flokkurId], references: [id])
+  flokkurId         Int
+  createdAt         DateTime            @default(now())
+  Answer            Answer[]
+  UserLikesQuestion UserLikesQuestion[]
 }
 
 // Many to many vensl fyrir upvotes
-model Svar {
+model Answer {
   id         Int      @id @default(autoincrement())
   title      String
   body       String
   user       User     @relation(fields: [userId], references: [id])
   userId     Int
   createdAt  DateTime @default(now())
-  spurning   Spurning @relation(fields: [spurningId], references: [id])
-  spurningId Int
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId Int
 
-  UserLikesSvarEdaPost UserLikesSvarEdaPost[]
-  UserLikesSvar        UserLikesSvar[]
-  SvarComment          SvarComment[]
+  UserLikesAnswer UserLikesAnswer[]
+  AnswerComment   AnswerComment[]
 }
 
-model SvarComment {
+model AnswerComment {
   id        Int      @id @default(autoincrement())
   body      String
   user      User     @relation(fields: [userId], references: [id])
   userId    Int
   parentId  Int? // Vísa í komment fyrir ofan
-  svar      Svar     @relation(fields: [svarId], references: [id])
-  svarId    Int
+  answer    Answer   @relation(fields: [answerId], references: [id])
+  answerId  Int
   createdAt DateTime @default(now())
 }
 
@@ -71,7 +68,7 @@ model Flokkur {
   id       Int        @id @default(autoincrement())
   titill   String
   litur    String
-  Spurning Spurning[]
+  Question Question[]
 }
 
 // Útfærslur á many-to-many venslunum fyrir
@@ -79,48 +76,48 @@ model Flokkur {
 
 //------- Útfærsla 1 ------------------------
 
-model UserLikesSvarEdaPost {
-  user       User     @relation(fields: [userId], references: [id])
-  userId     Int
-  action     String
-  // Vandamál því svar gæti verið null þegar verið að vísa í spurningu
-  // Gætum leyft svarId að vera 0 til að komast fram hjá þessu
-  svar       Svar     @relation(fields: [svarId], references: [id])
-  svarId     Int
-  spurning   Spurning @relation(fields: [spurningId], references: [id])
-  spurningId Int
-  dateTime   DateTime @default(now())
+// model UserLikesSvarEdaPost {
+//   user       User     @relation(fields: [userId], references: [id])
+//   userId     Int
+//   action     String
+//   // Vandamál því svar gæti verið null þegar verið að vísa í spurningu
+//   // Gætum leyft svarId að vera 0 til að komast fram hjá þessu
+//   svar       Svar     @relation(fields: [svarId], references: [id])
+//   svarId     Int
+//   spurning   Spurning @relation(fields: [spurningId], references: [id])
+//   spurningId Int
+//   dateTime   DateTime @default(now())
 
-  @@id([userId, spurningId, svarId])
-}
+//   @@id([userId, spurningId, svarId])
+// }
 
 // ------------------------------------------
 
 //------- Útfærsla 2 ------------------------
 
 //Hvaða user hefur upvote-að hvaða svar
-model UserLikesSvar {
+model UserLikesAnswer {
   user     User     @relation(fields: [userId], references: [id])
   userId   Int
   action   String
-  svar     Svar     @relation(fields: [svarId], references: [id])
-  svarId   Int
+  answer   Answer   @relation(fields: [answerId], references: [id])
+  answerId Int
   dateTime DateTime @default(now())
 
-  @@id([userId, svarId])
+  @@id([userId, answerId])
 }
 
-model userLikesSpurning {
+model UserLikesQuestion {
   user   User   @relation(fields: [userId], references: [id])
   userId Int
   action String
 
-  spurning   Spurning @relation(fields: [spurningId], references: [id])
-  spurningId Int
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId Int
   dateTime   DateTime @default(now())
 
 
-  @@id([userId, spurningId])
+  @@id([userId, questionId])
 }
 
 // ------------------------------------------
@@ -130,11 +127,11 @@ model Badge {
   imageUrl      String
   title         String
   description   String
-  userHasBadges userHasBadges[]
+  UserHasBadges UserHasBadges[]
 }
 
 // Hvaða user á hvaða badge
-model userHasBadges {
+model UserHasBadges {
   user     User     @relation(fields: [userId], references: [id])
   userId   Int
   badge    Badge    @relation(fields: [badgeId], references: [id])
