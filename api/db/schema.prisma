@@ -24,6 +24,7 @@ model User {
   UserLikesQuestion UserLikesQuestion[]
   UserHasBadges     UserHasBadges[]
   UserIsInGroup     UserIsInGroup[]
+  UserLikesComment  UserLikesComment[]
 }
 
 // Svipað og facebook hópur
@@ -51,6 +52,7 @@ model Question {
   Answer            Answer[]
   UserLikesQuestion UserLikesQuestion[]
   Issue             Issue[]
+  UserLikesComment  UserLikesComment[]
 }
 
 model Sentence {
@@ -150,6 +152,18 @@ model UserLikesQuestion {
   questionId Int
   dateTime   DateTime @default(now())
 
+
+  @@id([userId, questionId])
+}
+
+model UserLikesComment {
+  user   User   @relation(fields: [userId], references: [id])
+  action String
+
+  question   Question @relation(fields: [questionId], references: [id])
+  dateTime   DateTime @default(now())
+  userId     Int
+  questionId Int
 
   @@id([userId, questionId])
 }
