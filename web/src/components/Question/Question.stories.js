@@ -42,7 +42,7 @@ const LIKES = [
   {
     userId: 4,
     questionId: 1,
-    action: 'Like',
+    action: 'Dislike',
     dateTime: '',
   },
 ]

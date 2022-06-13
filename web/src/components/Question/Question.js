@@ -4,13 +4,10 @@ import { Form, TextField } from '@redwoodjs/forms'
 const Question = ({ question, likes }) => {
   const handleUpvoteCount = (likes) => {
     let count = 0
-    for (let i = 0; i < likes.length; i++) {
-      if (likes[i].action === 'Like') {
-        count++
-      } else {
-        count--
-      }
-    }
+
+    likes.forEach((like) => {
+      like.action === 'Like' ? count++ : count--
+    })
     return count
   }
   const [upvoteCount, setUpvoteCount] = useState(0)
