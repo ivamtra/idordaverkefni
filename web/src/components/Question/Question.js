@@ -12,6 +12,7 @@ const Question = ({ question, likes }) => {
   }
   const [upvoteCount, setUpvoteCount] = useState(0)
   useEffect(() => {
+    console.log('update')
     setUpvoteCount(handleUpvoteCount(likes))
   })
   return (
