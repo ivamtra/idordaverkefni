@@ -28,15 +28,16 @@ model User {
 // Svipað og facebook hópur
 // Margir hópar til og hver user getur verið í mörgum hópum
 model Group {
-  id   Int    @id @default(autoincrement())
-  name String
+  id       Int    @id @default(autoincrement())
+  name     String
+  imageUrl String
 }
 
 model Question {
   id                Int                 @id @default(autoincrement())
   title             String
   sentences         Sentence[] // Hver spurning getur innihaldið nokkrar setningar sem dæmi.
-  language          String // Tungumálið á spurningunni
+  language          String // Tungumálið í spurningunni
   definition        String // Enska/útlenska skilgreiningin
   other_info        String? // fleiri upplýsingar um orðið
   user              User                @relation(fields: [userId], references: [id])
@@ -68,7 +69,7 @@ model Answer {
 
   UserLikesAnswer UserLikesAnswer[]
   AnswerComment   AnswerComment[]
-  Translation     Translation[]
+  Translation     Translation[] // Hvert svar getur innihaldið nokkrar þýðingar
   Issue           Issue[]
 }
 
