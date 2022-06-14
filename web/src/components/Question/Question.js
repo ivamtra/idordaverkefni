@@ -16,6 +16,7 @@ const formatDateTime = (dateTime) => {
 }
 
 const Question = ({ question, likes }) => {
+  // TODO: setja í almennan klasa
   const handleUpvoteCount = (likes) => {
     let count = 0
 

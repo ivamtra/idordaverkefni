@@ -74,7 +74,7 @@ model Answer {
 
   UserLikesAnswer UserLikesAnswer[]
   AnswerComment   AnswerComment[]
-  Translation     Translation[] // Hvert svar getur innihaldið nokkrar þýðingar
+  translations    Translation[] // Hvert svar getur innihaldið nokkrar þýðingar
   Issue           Issue[]
 }
 
