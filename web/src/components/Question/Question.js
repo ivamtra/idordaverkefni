@@ -38,6 +38,7 @@ const Question = ({ question, likes }) => {
         <button>downvote</button>
         <p>Number of upvotes: {upvoteCount}</p>
         <p>Dagsetning: {formatDateTime(question.createdAt)}</p>
+        <p>userId: {question.userId} (breytist seinna)</p>
       </div>
       <h1>{question.title}</h1>
       <h3>Setningar:</h3>
