@@ -18,6 +18,7 @@ const QUESTION = {
   definition: 'A wearable is an object that...',
   other_info: 'Apple watch is a wearable',
   language: 'enska',
+  createdAt: '2020-01-01T12:34:56Z',
 }
 
 const LIKES = [
@@ -25,25 +26,25 @@ const LIKES = [
     userId: 1,
     questionId: 1,
     action: 'Like',
-    dateTime: '',
+    dateTime: '2020-01-01T12:34:56Z',
   },
   {
     userId: 2,
     questionId: 1,
     action: 'Like',
-    dateTime: '',
+    dateTime: '2020-01-01T12:34:56Z',
   },
   {
     userId: 3,
     questionId: 1,
     action: 'Like',
-    dateTime: '',
+    dateTime: '2020-01-01T12:34:56Z',
   },
   {
     userId: 4,
     questionId: 1,
     action: 'Dislike',
-    dateTime: '',
+    dateTime: '2020-01-01T12:34:56Z',
   },
 ]
 

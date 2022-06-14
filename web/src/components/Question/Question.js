@@ -1,6 +1,20 @@
 import { useState, useEffect } from 'react'
 import { Form, TextField } from '@redwoodjs/forms'
 
+// TODO: Setja í almennan klasa
+const formatDateTime = (dateTime) => {
+  return (
+    // Dagur
+    dateTime.substring(8, 10) +
+    '.' +
+    // Mánuður
+    dateTime.substring(5, 7) +
+    '.' +
+    // Ár
+    dateTime.substring(0, 4)
+  )
+}
+
 const Question = ({ question, likes }) => {
   const handleUpvoteCount = (likes) => {
     let count = 0
@@ -18,10 +32,11 @@ const Question = ({ question, likes }) => {
   return (
     <div>
       <div>
-        {/*Todo vantar virkni á takka */}
+        {/*TODO: vantar virkni á takka */}
         <button>upvote</button>
         <button>downvote</button>
-        <p>Number of upvotes: {upvoteCount}</p> {}
+        <p>Number of upvotes: {upvoteCount}</p>
+        <p>Dagsetning: {formatDateTime(question.createdAt)}</p>
       </div>
       <h1>{question.title}</h1>
       <h3>Setningar:</h3>
