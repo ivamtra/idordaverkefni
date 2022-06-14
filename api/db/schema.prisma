@@ -38,21 +38,22 @@ model Group {
 }
 
 model Question {
-  id                Int                 @id @default(autoincrement())
-  title             String
-  sentences         Sentence[] // Hver spurning getur innihaldið nokkrar setningar sem dæmi.
-  language          String // Tungumálið í spurningunni
-  definition        String // Enska/útlenska skilgreiningin
-  other_info        String? // fleiri upplýsingar um orðið
-  user              User                @relation(fields: [userId], references: [id])
-  userId            Int
-  category          Category            @relation(fields: [categoryId], references: [id])
-  categoryId        Int
-  createdAt         DateTime            @default(now())
-  Answer            Answer[]
-  UserLikesQuestion UserLikesQuestion[]
-  Issue             Issue[]
-  UserLikesComment  UserLikesComment[]
+  id                   Int                    @id @default(autoincrement())
+  title                String
+  sentences            Sentence[] // Hver spurning getur innihaldið nokkrar setningar sem dæmi.
+  language             String // Tungumálið í spurningunni
+  definition           String // Enska/útlenska skilgreiningin
+  other_info           String? // fleiri upplýsingar um orðið
+  user                 User                   @relation(fields: [userId], references: [id])
+  userId               Int
+  createdAt            DateTime               @default(now())
+  Answer               Answer[]
+  UserLikesQuestion    UserLikesQuestion[]
+  Issue                Issue[]
+  UserLikesComment     UserLikesComment[]
+  Category             Category?              @relation(fields: [categoryId], references: [id])
+  categoryId           Int?
+  questionIsInCategory questionIsInCategory[]
 }
 
 model Sentence {
@@ -99,10 +100,11 @@ model AnswerComment {
 }
 
 model Category {
-  id       Int        @id @default(autoincrement())
-  titill   String
-  litur    String
-  Question Question[]
+  id                   Int                    @id @default(autoincrement())
+  titill               String
+  litur                String
+  Question             Question[]
+  questionIsInCategory questionIsInCategory[]
 }
 
 // Útfærslur á many-to-many venslunum fyrir
@@ -214,4 +216,15 @@ model Issue {
   questionId      Int @default(0)
   answerId        Int @default(0)
   answerCommentId Int @default(0)
+}
+
+// Many-to-many vensl fyrir spurningar og flokka
+model questionIsInCategory {
+  question Question @relation(fields: [questionId], references: [id])
+  category Category @relation(fields: [categoryId], references: [id])
+
+  questionId Int
+  categoryId Int
+
+  @@id([questionId, categoryId])
 }

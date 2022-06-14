@@ -15,9 +15,10 @@ const QUESTION = {
       questionId: 1,
     },
   ],
+  language: 'enska',
   definition: 'A wearable is an object that...',
   other_info: 'Apple watch is a wearable',
-  language: 'enska',
+  userId: 1,
   createdAt: '2020-01-01T12:34:56Z',
 }
 
