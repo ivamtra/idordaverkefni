@@ -1,3 +1,5 @@
+//TODO: Breyta many-to-many venslum
+
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
