@@ -9,22 +9,24 @@ generator client {
 }
 
 model User {
-  id                Int                 @id @default(autoincrement())
-  email             String              @unique
-  name              String //notandanafnið
-  createdAt         DateTime            @default(now())
-  roles             String              @default("user") //State of user. Moderator, admin, banned, etc.
-  hashedPassword    String
-  salt              String
-  imageUrl          String // Fyrir profile-mynd
-  Question          Question[]
-  Answer            Answer[]
-  AnswerComment     AnswerComment[]
-  UserLikesAnswer   UserLikesAnswer[]
-  UserLikesQuestion UserLikesQuestion[]
-  UserHasBadges     UserHasBadges[]
-  UserIsInGroup     UserIsInGroup[]
-  UserLikesComment  UserLikesComment[]
+  id                  Int                 @id @default(autoincrement())
+  email               String              @unique
+  name                String //notandanafnið
+  createdAt           DateTime            @default(now())
+  roles               String              @default("user") //State of user. Moderator, admin, banned, etc.
+  hashedPassword      String
+  salt                String
+  resetToken          String?
+  resetTokenExpiresAt DateTime?
+  imageUrl            String // Fyrir profile-mynd
+  Question            Question[]
+  Answer              Answer[]
+  AnswerComment       AnswerComment[]
+  UserLikesAnswer     UserLikesAnswer[]
+  UserLikesQuestion   UserLikesQuestion[]
+  UserHasBadges       UserHasBadges[]
+  UserIsInGroup       UserIsInGroup[]
+  UserLikesComment    UserLikesComment[]
 }
 
 // Svipað og facebook hópur
