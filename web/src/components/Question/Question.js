@@ -20,6 +20,7 @@ const Question = ({ question, likes }) => {
   const handleUpvoteCount = (likes) => {
     let count = 0
 
+    // Líklegt til að breytast því like getur verið boolean
     likes.forEach((like) => {
       like.action === 'Like' ? count++ : count--
     })
