@@ -15,7 +15,7 @@ export const schema = gql`
     UserLikesComment: [UserLikesComment]!
     Category: Category
     categoryId: Int
-    questionIsInCategory: [questionIsInCategory]!
+    QuestionIsInCategory: [QuestionIsInCategory]!
   }
 
   type Query {

@@ -44,6 +44,6 @@ export const Question = {
     db.question.findUnique({ where: { id: root.id } }).UserLikesComment(),
   Category: (_obj, { root }) =>
     db.question.findUnique({ where: { id: root.id } }).Category(),
-  questionIsInCategory: (_obj, { root }) =>
-    db.question.findUnique({ where: { id: root.id } }).questionIsInCategory(),
+  QuestionIsInCategory: (_obj, { root }) =>
+    db.question.findUnique({ where: { id: root.id } }).QuestionIsInCategory(),
 }
