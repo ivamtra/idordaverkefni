@@ -8,7 +8,7 @@ yarn rw g sdl QuestionIsInCategory --force
 yarn rw g sdl Question --force
 yarn rw g sdl Sentence --force
 yarn rw g sdl Translation --force
-yarn rw g sdl UserHasBadges --force
+yarn rw g sdl UserHasBadge --force
 yarn rw g sdl UserIsInGroup --force
 yarn rw g sdl UserLikesAnswer --force
 yarn rw g sdl UserLikesComment --force
