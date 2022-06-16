@@ -30,8 +30,6 @@ export const deleteCategory = ({ id }) => {
 }
 
 export const Category = {
-  Question: (_obj, { root }) =>
-    db.category.findUnique({ where: { id: root.id } }).Question(),
   QuestionIsInCategory: (_obj, { root }) =>
     db.category.findUnique({ where: { id: root.id } }).QuestionIsInCategory(),
 }

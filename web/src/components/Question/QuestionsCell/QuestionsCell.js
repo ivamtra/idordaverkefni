@@ -12,7 +12,6 @@ export const QUERY = gql`
       other_info
       userId
       createdAt
-      categoryId
     }
   }
 `

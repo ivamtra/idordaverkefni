@@ -86,7 +86,6 @@ const QuestionsList = ({ questions }) => {
             <th>Other info</th>
             <th>User id</th>
             <th>Created at</th>
-            <th>Category id</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -100,7 +99,6 @@ const QuestionsList = ({ questions }) => {
               <td>{truncate(question.other_info)}</td>
               <td>{truncate(question.userId)}</td>
               <td>{timeTag(question.createdAt)}</td>
-              <td>{truncate(question.categoryId)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

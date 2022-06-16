@@ -3,7 +3,6 @@ export const schema = gql`
     id: Int!
     titill: String!
     litur: String!
-    Question: [Question]!
     QuestionIsInCategory: [QuestionIsInCategory]!
   }
 

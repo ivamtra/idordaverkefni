@@ -26,10 +26,7 @@ const NewQuestion = () => {
   )
 
   const onSave = (input) => {
-    const castInput = Object.assign(input, {
-      userId: parseInt(input.userId),
-      categoryId: parseInt(input.categoryId),
-    })
+    const castInput = Object.assign(input, { userId: parseInt(input.userId) })
     createQuestion({ variables: { input: castInput } })
   }
 

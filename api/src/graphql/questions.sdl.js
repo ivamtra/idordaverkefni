@@ -1,4 +1,3 @@
-//TODO: Breyta auth seinna
 export const schema = gql`
   type Question {
     id: Int!
@@ -9,8 +8,6 @@ export const schema = gql`
     user: User!
     userId: Int!
     createdAt: DateTime!
-    Category: Category
-    categoryId: Int
     Sentence: [Sentence]!
     Answer: [Answer]!
     UserLikesQuestion: [UserLikesQuestion]!
@@ -30,7 +27,6 @@ export const schema = gql`
     definition: String!
     other_info: String
     userId: Int!
-    categoryId: Int
   }
 
   input UpdateQuestionInput {
@@ -39,12 +35,12 @@ export const schema = gql`
     definition: String
     other_info: String
     userId: Int
-    categoryId: Int
   }
 
   type Mutation {
-    createQuestion(input: CreateQuestionInput!): Question! @skipAuth
-    updateQuestion(id: Int!, input: UpdateQuestionInput!): Question! @skipAuth
-    deleteQuestion(id: Int!): Question! @skipAuth
+    createQuestion(input: CreateQuestionInput!): Question! @requireAuth
+    updateQuestion(id: Int!, input: UpdateQuestionInput!): Question!
+      @requireAuth
+    deleteQuestion(id: Int!): Question! @requireAuth
   }
 `

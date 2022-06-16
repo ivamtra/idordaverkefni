@@ -112,23 +112,6 @@ const QuestionForm = (props) => {
 
         <FieldError name="userId" className="rw-field-error" />
 
-        <Label
-          name="categoryId"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Category id
-        </Label>
-
-        <NumberField
-          name="categoryId"
-          defaultValue={props.question?.categoryId}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-
-        <FieldError name="categoryId" className="rw-field-error" />
-
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save

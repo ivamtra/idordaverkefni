@@ -32,8 +32,6 @@ export const deleteQuestion = ({ id }) => {
 export const Question = {
   user: (_obj, { root }) =>
     db.question.findUnique({ where: { id: root.id } }).user(),
-  Category: (_obj, { root }) =>
-    db.question.findUnique({ where: { id: root.id } }).Category(),
   Sentence: (_obj, { root }) =>
     db.question.findUnique({ where: { id: root.id } }).Sentence(),
   Answer: (_obj, { root }) =>

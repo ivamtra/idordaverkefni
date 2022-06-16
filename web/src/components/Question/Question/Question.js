@@ -100,10 +100,6 @@ const Question = ({ question }) => {
               <th>Created at</th>
               <td>{timeTag(question.createdAt)}</td>
             </tr>
-            <tr>
-              <th>Category id</th>
-              <td>{question.categoryId}</td>
-            </tr>
           </tbody>
         </table>
       </div>

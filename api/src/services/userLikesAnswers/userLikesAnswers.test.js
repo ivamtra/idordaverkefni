@@ -31,13 +31,13 @@ describe('userLikesAnswers', () => {
     const result = await createUserLikesAnswer({
       input: {
         userId: scenario.userLikesAnswer.two.userId,
-        action: 3401931,
+        action: 2527666,
         answerId: scenario.userLikesAnswer.two.answerId,
       },
     })
 
     expect(result.userId).toEqual(scenario.userLikesAnswer.two.userId)
-    expect(result.action).toEqual(3401931)
+    expect(result.action).toEqual(2527666)
     expect(result.answerId).toEqual(scenario.userLikesAnswer.two.answerId)
   })
 
@@ -48,10 +48,10 @@ describe('userLikesAnswers', () => {
 
     const result = await updateUserLikesAnswer({
       id: original.id,
-      input: { action: 4994439 },
+      input: { action: 1099005 },
     })
 
-    expect(result.action).toEqual(4994439)
+    expect(result.action).toEqual(1099005)
   })
 
   scenario('deletes a userLikesAnswer', async (scenario) => {

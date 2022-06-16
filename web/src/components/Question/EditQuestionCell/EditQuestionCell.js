@@ -14,7 +14,6 @@ export const QUERY = gql`
       other_info
       userId
       createdAt
-      categoryId
     }
   }
 `
@@ -28,7 +27,6 @@ const UPDATE_QUESTION_MUTATION = gql`
       other_info
       userId
       createdAt
-      categoryId
     }
   }
 `
@@ -54,10 +52,7 @@ export const Success = ({ question }) => {
   )
 
   const onSave = (input, id) => {
-    const castInput = Object.assign(input, {
-      userId: parseInt(input.userId),
-      categoryId: parseInt(input.categoryId),
-    })
+    const castInput = Object.assign(input, { userId: parseInt(input.userId) })
     updateQuestion({ variables: { id, input: castInput } })
   }
 
