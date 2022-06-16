@@ -1,31 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Form, TextField } from '@redwoodjs/forms'
-
-// TODO: Setja í almennan klasa
-const formatDateTime = (dateTime) => {
-  return (
-    // Dagur
-    dateTime.substring(8, 10) +
-    '.' +
-    // Mánuður
-    dateTime.substring(5, 7) +
-    '.' +
-    // Ár
-    dateTime.substring(0, 4)
-  )
-}
+// TODO: Hafa þetta relative
+import {
+  formatDateTime,
+  handleUpvoteCount,
+} from '/Users/ivanmar/Desktop/Sumar2022/redwood/web/src/utils/utils'
 
 const Question = ({ question, likes }) => {
-  // TODO: setja í almennan klasa
-  const handleUpvoteCount = (likes) => {
-    let count = 0
-
-    // Líklegt til að breytast því like getur verið boolean
-    likes.forEach((like) => {
-      like.action === 'Like' ? count++ : count--
-    })
-    return count
-  }
   const [upvoteCount, setUpvoteCount] = useState(0)
   useEffect(() => {
     console.log('update')

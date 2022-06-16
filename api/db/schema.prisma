@@ -137,7 +137,7 @@ model Category {
 model UserLikesAnswer {
   user     User     @relation(fields: [userId], references: [id])
   userId   Int
-  action   String
+  action   Int // -1, 0, 1
   answer   Answer   @relation(fields: [answerId], references: [id])
   answerId Int
   dateTime DateTime @default(now())
@@ -146,9 +146,9 @@ model UserLikesAnswer {
 }
 
 model UserLikesQuestion {
-  user   User   @relation(fields: [userId], references: [id])
+  user   User @relation(fields: [userId], references: [id])
   userId Int
-  action String
+  action Int // -1, 0, 1
 
   question   Question @relation(fields: [questionId], references: [id])
   questionId Int
@@ -159,8 +159,8 @@ model UserLikesQuestion {
 }
 
 model UserLikesComment {
-  user   User   @relation(fields: [userId], references: [id])
-  action String
+  user   User @relation(fields: [userId], references: [id])
+  action Int // -1, 0, 1
 
   question   Question @relation(fields: [questionId], references: [id])
   dateTime   DateTime @default(now())

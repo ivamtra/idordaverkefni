@@ -26,25 +26,25 @@ const LIKES = [
   {
     userId: 1,
     questionId: 1,
-    action: 'Like',
+    action: 1,
     dateTime: '2020-01-01T12:34:56Z',
   },
   {
     userId: 2,
     questionId: 1,
-    action: 'Like',
+    action: 1,
     dateTime: '2020-01-01T12:34:56Z',
   },
   {
     userId: 3,
     questionId: 1,
-    action: 'Like',
+    action: 1,
     dateTime: '2020-01-01T12:34:56Z',
   },
   {
     userId: 4,
     questionId: 1,
-    action: 'Dislike',
+    action: -1,
     dateTime: '2020-01-01T12:34:56Z',
   },
 ]
