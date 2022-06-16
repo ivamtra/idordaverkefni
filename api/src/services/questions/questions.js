@@ -30,20 +30,20 @@ export const deleteQuestion = ({ id }) => {
 }
 
 export const Question = {
-  sentences: (_obj, { root }) =>
-    db.question.findUnique({ where: { id: root.id } }).sentences(),
   user: (_obj, { root }) =>
     db.question.findUnique({ where: { id: root.id } }).user(),
+  Category: (_obj, { root }) =>
+    db.question.findUnique({ where: { id: root.id } }).Category(),
+  Sentence: (_obj, { root }) =>
+    db.question.findUnique({ where: { id: root.id } }).Sentence(),
   Answer: (_obj, { root }) =>
     db.question.findUnique({ where: { id: root.id } }).Answer(),
   UserLikesQuestion: (_obj, { root }) =>
     db.question.findUnique({ where: { id: root.id } }).UserLikesQuestion(),
-  Issue: (_obj, { root }) =>
-    db.question.findUnique({ where: { id: root.id } }).Issue(),
   UserLikesComment: (_obj, { root }) =>
     db.question.findUnique({ where: { id: root.id } }).UserLikesComment(),
-  Category: (_obj, { root }) =>
-    db.question.findUnique({ where: { id: root.id } }).Category(),
+  Issue: (_obj, { root }) =>
+    db.question.findUnique({ where: { id: root.id } }).Issue(),
   QuestionIsInCategory: (_obj, { root }) =>
     db.question.findUnique({ where: { id: root.id } }).QuestionIsInCategory(),
 }

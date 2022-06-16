@@ -2,19 +2,19 @@ export const schema = gql`
   type Question {
     id: Int!
     title: String!
-    sentences: [Sentence]!
     language: String!
     definition: String!
     other_info: String
     user: User!
     userId: Int!
     createdAt: DateTime!
-    Answer: [Answer]!
-    UserLikesQuestion: [UserLikesQuestion]!
-    Issue: [Issue]!
-    UserLikesComment: [UserLikesComment]!
     Category: Category
     categoryId: Int
+    Sentence: [Sentence]!
+    Answer: [Answer]!
+    UserLikesQuestion: [UserLikesQuestion]!
+    UserLikesComment: [UserLikesComment]!
+    Issue: [Issue]!
     QuestionIsInCategory: [QuestionIsInCategory]!
   }
 
