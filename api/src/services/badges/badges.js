@@ -30,6 +30,6 @@ export const deleteBadge = ({ id }) => {
 }
 
 export const Badge = {
-  UserHasBadges: (_obj, { root }) =>
-    db.badge.findUnique({ where: { id: root.id } }).UserHasBadges(),
+  UserHasBadge: (_obj, { root }) =>
+    db.badge.findUnique({ where: { id: root.id } }).UserHasBadge(),
 }

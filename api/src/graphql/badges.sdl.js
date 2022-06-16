@@ -4,7 +4,7 @@ export const schema = gql`
     imageUrl: String!
     title: String!
     description: String!
-    UserHasBadges: [UserHasBadges]!
+    UserHasBadge: [UserHasBadge]!
   }
 
   type Query {

@@ -15,7 +15,7 @@ export const schema = gql`
     AnswerComment: [AnswerComment]!
     UserLikesAnswer: [UserLikesAnswer]!
     UserLikesQuestion: [UserLikesQuestion]!
-    UserHasBadges: [UserHasBadges]!
+    UserHasBadge: [UserHasBadge]!
     UserIsInGroup: [UserIsInGroup]!
     UserLikesComment: [UserLikesComment]!
   }

@@ -9,11 +9,9 @@ export const standard = defineScenario({
             definition: 'String',
             user: {
               create: {
-                email: 'String5949972',
-                name: 'String',
+                email: 'String1849791',
                 hashedPassword: 'String',
                 salt: 'String',
-                imageUrl: 'String',
               },
             },
           },
@@ -32,11 +30,9 @@ export const standard = defineScenario({
             definition: 'String',
             user: {
               create: {
-                email: 'String348397',
-                name: 'String',
+                email: 'String7588618',
                 hashedPassword: 'String',
                 salt: 'String',
-                imageUrl: 'String',
               },
             },
           },

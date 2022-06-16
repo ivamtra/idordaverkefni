@@ -2,14 +2,12 @@ export const standard = defineScenario({
   userLikesQuestion: {
     one: {
       data: {
-        action: 7175930,
+        action: 8948609,
         user: {
           create: {
-            email: 'String3790061',
-            name: 'String',
+            email: 'String1923758',
             hashedPassword: 'String',
             salt: 'String',
-            imageUrl: 'String',
           },
         },
 
@@ -20,11 +18,9 @@ export const standard = defineScenario({
             definition: 'String',
             user: {
               create: {
-                email: 'String5913857',
-                name: 'String',
+                email: 'String9531866',
                 hashedPassword: 'String',
                 salt: 'String',
-                imageUrl: 'String',
               },
             },
           },
@@ -34,14 +30,12 @@ export const standard = defineScenario({
 
     two: {
       data: {
-        action: 8104228,
+        action: 9186245,
         user: {
           create: {
-            email: 'String6492192',
-            name: 'String',
+            email: 'String8210619',
             hashedPassword: 'String',
             salt: 'String',
-            imageUrl: 'String',
           },
         },
 
@@ -52,11 +46,9 @@ export const standard = defineScenario({
             definition: 'String',
             user: {
               create: {
-                email: 'String207605',
-                name: 'String',
+                email: 'String1090294',
                 hashedPassword: 'String',
                 salt: 'String',
-                imageUrl: 'String',
               },
             },
           },

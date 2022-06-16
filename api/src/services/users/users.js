@@ -40,8 +40,8 @@ export const User = {
     db.user.findUnique({ where: { id: root.id } }).UserLikesAnswer(),
   UserLikesQuestion: (_obj, { root }) =>
     db.user.findUnique({ where: { id: root.id } }).UserLikesQuestion(),
-  UserHasBadges: (_obj, { root }) =>
-    db.user.findUnique({ where: { id: root.id } }).UserHasBadges(),
+  UserHasBadge: (_obj, { root }) =>
+    db.user.findUnique({ where: { id: root.id } }).UserHasBadge(),
   UserIsInGroup: (_obj, { root }) =>
     db.user.findUnique({ where: { id: root.id } }).UserIsInGroup(),
   UserLikesComment: (_obj, { root }) =>

@@ -5,11 +5,9 @@ export const standard = defineScenario({
         body: 'String',
         user: {
           create: {
-            email: 'String5096489',
-            name: 'String',
+            email: 'String1904737',
             hashedPassword: 'String',
             salt: 'String',
-            imageUrl: 'String',
           },
         },
 
@@ -19,11 +17,9 @@ export const standard = defineScenario({
             justification: 'String',
             user: {
               create: {
-                email: 'String4596659',
-                name: 'String',
+                email: 'String5861274',
                 hashedPassword: 'String',
                 salt: 'String',
-                imageUrl: 'String',
               },
             },
 
@@ -34,11 +30,9 @@ export const standard = defineScenario({
                 definition: 'String',
                 user: {
                   create: {
-                    email: 'String4718357',
-                    name: 'String',
+                    email: 'String946775',
                     hashedPassword: 'String',
                     salt: 'String',
-                    imageUrl: 'String',
                   },
                 },
               },
@@ -53,11 +47,9 @@ export const standard = defineScenario({
         body: 'String',
         user: {
           create: {
-            email: 'String3540680',
-            name: 'String',
+            email: 'String5820928',
             hashedPassword: 'String',
             salt: 'String',
-            imageUrl: 'String',
           },
         },
 
@@ -67,11 +59,9 @@ export const standard = defineScenario({
             justification: 'String',
             user: {
               create: {
-                email: 'String8518571',
-                name: 'String',
+                email: 'String9496188',
                 hashedPassword: 'String',
                 salt: 'String',
-                imageUrl: 'String',
               },
             },
 
@@ -82,11 +72,9 @@ export const standard = defineScenario({
                 definition: 'String',
                 user: {
                   create: {
-                    email: 'String9807014',
-                    name: 'String',
+                    email: 'String6568035',
                     hashedPassword: 'String',
                     salt: 'String',
-                    imageUrl: 'String',
                   },
                 },
               },
