@@ -127,7 +127,7 @@ model Category {
 //   spurningId Int
 //   dateTime   DateTime @default(now())
 
-//   @@id([userId, spurningId, svarId])
+//   @@unique([userId, spurningId, svarId])
 // }
 
 // ------------------------------------------
@@ -138,6 +138,7 @@ model Category {
 
 //Hvaða user hefur upvote-að hvaða svar
 model UserLikesAnswer {
+  id       Int      @id @default(autoincrement())
   user     User     @relation(fields: [userId], references: [id])
   userId   Int
   action   Int // -1, 0, 1
@@ -145,10 +146,11 @@ model UserLikesAnswer {
   answerId Int
   dateTime DateTime @default(now())
 
-  @@id([userId, answerId])
+  @@unique([userId, answerId])
 }
 
 model UserLikesQuestion {
+  id     Int  @id @default(autoincrement())
   user   User @relation(fields: [userId], references: [id])
   userId Int
   action Int // -1, 0, 1
@@ -158,10 +160,11 @@ model UserLikesQuestion {
   dateTime   DateTime @default(now())
 
 
-  @@id([userId, questionId])
+  @@unique([userId, questionId])
 }
 
 model UserLikesComment {
+  id     Int  @id @default(autoincrement())
   user   User @relation(fields: [userId], references: [id])
   action Int // -1, 0, 1
 
@@ -170,7 +173,7 @@ model UserLikesComment {
   userId     Int
   questionId Int
 
-  @@id([userId, questionId])
+  @@unique([userId, questionId])
 }
 
 // ------------------------------------------
@@ -185,6 +188,7 @@ model Badge {
 
 // Hvaða user á hvaða badge
 model UserHasBadges {
+  id       Int      @id @default(autoincrement())
   user     User     @relation(fields: [userId], references: [id])
   userId   Int
   badge    Badge    @relation(fields: [badgeId], references: [id])
@@ -192,18 +196,19 @@ model UserHasBadges {
   dateTime DateTime @default(now()) //Dagsetning þegar user fær verðlaun
 
 
-  @@id([userId, badgeId])
+  @@unique([userId, badgeId])
 }
 
 // Vensl milli User og Group
 model UserIsInGroup {
+  id         Int      @id @default(autoincrement())
   user       User     @relation(fields: [userId], references: [id])
   userId     Int
   group      Group    @relation(fields: [groupId], references: [id])
   groupId    Int
   timeJoined DateTime @default(now())
 
-  @@id([userId, groupId])
+  @@unique([userId, groupId])
 }
 
 // Tafla sem geymir vandamál t.d. ef comment er reportað
@@ -223,11 +228,12 @@ model Issue {
 
 // Many-to-many vensl fyrir spurningar og flokka
 model QuestionIsInCategory {
+  id       Int      @id @default(autoincrement())
   question Question @relation(fields: [questionId], references: [id])
   category Category @relation(fields: [categoryId], references: [id])
 
   questionId Int
   categoryId Int
 
-  @@id([questionId, categoryId])
+  @@unique([questionId, categoryId])
 }
