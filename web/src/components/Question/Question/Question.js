@@ -1,8 +1,13 @@
-import humanize from 'humanize-string'
+/*
+ * Nota þennan klasa
+ */
 
+import humanize from 'humanize-string'
+import { formatDateTime } from 'src/utils/utils'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 import { Link, routes, navigate } from '@redwoodjs/router'
+import { useEffect } from 'react'
 
 const DELETE_QUESTION_MUTATION = gql`
   mutation DeleteQuestionMutation($id: Int!) {
@@ -62,9 +67,13 @@ const Question = ({ question }) => {
     }
   }
 
+  useEffect(() => {
+    console.log(question)
+  })
+
   return (
     <>
-      <div className="rw-segment">
+      {/* <div className="rw-segment">
         <header className="rw-segment-header">
           <h2 className="rw-heading rw-heading-secondary">
             Question {question.id} Detail
@@ -117,7 +126,22 @@ const Question = ({ question }) => {
         >
           Delete
         </button>
-      </nav>
+      </nav> */}
+      <div>
+        <div>
+          {/*TODO: vantar virkni á takka */}
+          <button>upvote</button>
+          <button>downvote</button>
+          <p>Dagsetning: {formatDateTime(question.createdAt)}</p>
+          <p>userId: {question.userId} (breytist seinna)</p>
+        </div>
+        <h1>{question.title}</h1>
+        <h3>Setningar:</h3>
+        <div>
+          <h3>Tungumál: {question.language}</h3>
+          <h3>Aðrar upplýsingar: {question.other_info}</h3>
+        </div>
+      </div>
     </>
   )
 }

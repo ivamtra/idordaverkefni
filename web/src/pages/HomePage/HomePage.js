@@ -72,9 +72,9 @@ const HomePage = () => {
         <Link to={routes.home()}>Home</Link>`
       </p>
       <Question question={QUESTION} likes={LIKES} />
-      <h1>Bil</h1>
+      <h1>QuestionCell component byrjar</h1>
       <QuestionCell id={1} />
-      <h1>Bil</h1>
+      <h1>QuestionCell component endar</h1>
       <SentenceCell id={1} />
     </>
   )

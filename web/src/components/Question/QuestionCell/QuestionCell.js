@@ -1,3 +1,7 @@
+/*
+ * Nota þennan klasa
+ */
+
 import Question from 'src/components/Question/Question'
 
 export const QUERY = gql`
