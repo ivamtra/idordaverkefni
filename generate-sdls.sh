@@ -5,7 +5,7 @@ yarn rw g sdl Category --force
 yarn rw g sdl Group --force
 yarn rw g sdl Issue --force
 yarn rw g sdl QuestionIsInCategory --force
-yarn rw g sdl Question --force
+yarn rw g scaffold Question --force
 yarn rw g sdl Sentence --force
 yarn rw g sdl Translation --force
 yarn rw g sdl UserHasBadge --force

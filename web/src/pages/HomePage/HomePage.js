@@ -3,6 +3,8 @@ import { MetaTags } from '@redwoodjs/web'
 import Question from 'src/components/Question'
 import QuestionCell from 'src/components/Question/QuestionCell'
 
+// TODO: Laga QuestionCell
+
 const QUESTION = {
   id: 1,
   title: 'Wearable',
