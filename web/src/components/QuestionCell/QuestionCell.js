@@ -1,5 +1,5 @@
 // Kemur vitlaus Question component
-import Question from 'src/components/Question'
+import Question from 'src/components/Question/Question'
 export const QUERY = gql`
   query FindQuestionQuery($id: Int!) {
     question: question(id: $id) {

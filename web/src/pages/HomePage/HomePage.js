@@ -1,7 +1,8 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import Question from 'src/components/Question'
-import QuestionCell from 'src/components/QuestionCell/QuestionCell'
+import QuestionCell from 'src/components/Question/QuestionCell'
+import SentenceCell from 'src/components/SentenceCell/SentenceCell'
 
 // TODO: Laga QuestionCell
 
@@ -73,6 +74,8 @@ const HomePage = () => {
       <Question question={QUESTION} likes={LIKES} />
       <h1>Bil</h1>
       <QuestionCell id={1} />
+      <h1>Bil</h1>
+      <SentenceCell id={1} />
     </>
   )
 }
