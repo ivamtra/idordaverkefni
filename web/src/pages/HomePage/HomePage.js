@@ -1,7 +1,7 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import Question from 'src/components/Question'
-import QuestionCell from 'src/components/Question/QuestionCell'
+import QuestionCell from 'src/components/QuestionCell/QuestionCell'
 
 // TODO: Laga QuestionCell
 
