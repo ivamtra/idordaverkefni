@@ -1,6 +1,7 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import Question from 'src/components/Question'
+import QuestionCell from 'src/components/Question/QuestionCell'
 
 const QUESTION = {
   id: 1,
@@ -68,6 +69,8 @@ const HomePage = () => {
         <Link to={routes.home()}>Home</Link>`
       </p>
       <Question question={QUESTION} likes={LIKES} />
+      <h1>Bil</h1>
+      <QuestionCell id={1} />
     </>
   )
 }

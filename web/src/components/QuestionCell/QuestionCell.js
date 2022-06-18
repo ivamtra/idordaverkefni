@@ -1,3 +1,4 @@
+import Question from 'src/components/Question/Question'
 export const QUERY = gql`
   query FindQuestionQuery($id: Int!) {
     question: question(id: $id) {
@@ -15,5 +16,6 @@ export const Failure = ({ error }) => (
 )
 
 export const Success = ({ question }) => {
-  return <div>{JSON.stringify(question)}</div>
+  return <Question question={question} />
+  //return <div>{JSON.stringify(question)}</div>
 }

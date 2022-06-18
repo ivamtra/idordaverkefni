@@ -1,4 +1,7 @@
 //TODO: Vantar Triggera
+//TODO: Vantar likes dálk í Question, Answer .. sem updatast þegar likes taflan updatast.
+// Hugmynd: Hægt að láta upvote töluna hækka/lækka beint í staðinn fyrir að gera það
+// í gegnum gagnagrunninn
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
